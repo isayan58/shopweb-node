@@ -93,7 +93,7 @@ const userService = {
                     cb(null, response);
                 }
                 else{
-                    cb("user entered wrong password", response);
+                    cb({status: 400, message:"user entered wrong password"}, response);
                 }
             }
         });

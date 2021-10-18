@@ -44,7 +44,7 @@ const userController = {
                 });
             } else{
                 res.status(200).json({
-                    message: response//"Something went wrong"
+                    message: "User created"//response//"Something went wrong"
                     });
             }
         })
@@ -98,14 +98,14 @@ const userController = {
         const { email_id , password } = req.body;
         userService.authenticateUserService(email_id, password, (err, response) =>
         {
+            //console.log("3");
             if(err){
-                res.status(500).json({
-                message: "User Entered wrong password."
-                });
+                res.status(err.status).json(err.message);
             } else{
                 res.status(200).json({
                     message: "Logged in."//"Something went wrong"
                     });
+                //res.redirect("http://localhost:3000/");
             }
         });
     }
