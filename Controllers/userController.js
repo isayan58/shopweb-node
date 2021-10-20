@@ -1,5 +1,6 @@
 const { response } = require("express");
 const userService = require("../Services/userService");
+const jwt = require("jsonwebtoken");
 
 const userController = {
     postUsers: (req, res) => {
@@ -102,8 +103,14 @@ const userController = {
             if(err){
                 res.status(err.status).json(err.message);
             } else{
+                const authToken = jwt.sign({id: response._id}, process.env.secret, 
+                    {
+                        expiresIn: "20 days",
+                    });
+                    console.log("authToken: ",authToken);
                 res.status(200).json({
-                    message: "Logged in."//"Something went wrong"
+                    message: "Logged in.",
+                    token: authToken//"Something went wrong"
                     });
                 //res.redirect("http://localhost:3000/");
             }
