@@ -23,10 +23,6 @@ const userService = {
         .catch((err) =>
         {
             console.log("Data failed: ", err);
-            // res.status(500).json({
-            //     status: 500,
-            //     message: err
-            // });
             cb(err, null);
         });
     },
@@ -87,7 +83,7 @@ const userService = {
             else
             {
                 const result = await bcrypt.compare(password, response.password);
-                //console.log(result);
+                console.log("Name: ",response.first_name);
                 if(result)
                 {
                     cb(null, response);

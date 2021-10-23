@@ -45,7 +45,7 @@ const userController = {
                 });
             } else{
                 res.status(200).json({
-                    message: "User created"//response//"Something went wrong"
+                    message: "User created"
                     });
             }
         })
@@ -110,7 +110,8 @@ const userController = {
                     console.log("authToken: ",authToken);
                 res.status(200).json({
                     message: "Logged in.",
-                    token: authToken//"Something went wrong"
+                    token: authToken,
+                    name: response.first_name//"Something went wrong"
                     });
                 //res.redirect("http://localhost:3000/");
             }
